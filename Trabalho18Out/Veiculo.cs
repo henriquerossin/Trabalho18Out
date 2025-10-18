@@ -15,12 +15,16 @@ namespace Trabalho18Out
         public string Marca { get; private set; }
         public string Modelo { get; private set; }
         public string Tipo { get; protected set; }
+        public bool Disponivel { get; set; }
 
         public Veiculo(string marca, string modelo)
         {
             this.Marca = marca;
             this.Modelo = modelo;
+            this.Modelo = modelo;
         }
+
+        public abstract bool VerificarDisponibilidade();
 
         public virtual string ExibirInformacoes()
         {

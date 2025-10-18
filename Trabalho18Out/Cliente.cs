@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho18Out
 {
-    internal class Cliente : Pessoa
+    public class Cliente : Pessoa
     {
         public string Telefone { get; private set; }
         public Cliente()
