@@ -8,7 +8,6 @@ namespace Trabalho18Out
 {
     internal class Caminhao : Veiculo
     {
-        //public bool Disponivel { get; set; }
 
         public Caminhao()
         {
@@ -16,7 +15,7 @@ namespace Trabalho18Out
 
         public Caminhao(string marca, string modelo) : base(marca, modelo)
         {
-            Tipo = "Caminhão";
+            Tipo = "Caminhao";
             Disponivel = true;
         }
 

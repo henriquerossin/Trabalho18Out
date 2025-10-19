@@ -14,7 +14,7 @@ namespace Trabalho18Out
 
         public string Marca { get; private set; }
         public string Modelo { get; private set; }
-        public string Tipo { get; protected set; }
+        public string Tipo { get; set; }
         public bool Disponivel { get; set; }
 
         public Veiculo(string marca, string modelo)

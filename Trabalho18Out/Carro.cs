@@ -8,7 +8,6 @@ namespace Trabalho18Out
 {
     internal class Carro : Veiculo
     {
-        //public bool Disponivel { get; set; }
 
         public Carro()
         {
