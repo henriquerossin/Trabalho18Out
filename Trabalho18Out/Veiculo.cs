@@ -29,7 +29,7 @@ namespace Trabalho18Out
 
         public virtual string ExibirInformacoes()
         {
-            return $"Marca: {this.Marca}, Modelo: {this.Modelo}, Tipo: {this.Tipo}";
+            return $"Marca: {this.Marca}, Modelo: {this.Modelo}, Tipo: {this.Tipo},";
         }
     }
 }
