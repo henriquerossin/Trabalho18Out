@@ -21,8 +21,9 @@ namespace Trabalho18Out
         {
             this.Marca = marca;
             this.Modelo = modelo;
-            this.Modelo = modelo;
         }
+
+        public abstract decimal CalcularValor(int dias);
 
         public abstract bool VerificarDisponibilidade();
 

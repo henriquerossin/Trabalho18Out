@@ -8,7 +8,7 @@ namespace Trabalho18Out
 {
     internal class Moto : Veiculo
     {
-        public bool Disponivel { get; set; }
+        //public bool Disponivel { get; set; }
 
         public Moto()
         {
@@ -17,18 +17,17 @@ namespace Trabalho18Out
         public Moto(string marca, string modelo) : base(marca, modelo)
         {
             Tipo = "Moto";
+            Disponivel = true;
+        }
+
+        public override decimal CalcularValor(int dias)
+        {
+            return dias * 50;
         }
 
         public override bool VerificarDisponibilidade()
         {
-            if (Disponivel == true)
-            {
-                return Disponivel = true;
-            }
-            else
-            {
-                return Disponivel = false;
-            }
+            return Disponivel;
         }
 
         public override string? ToString()
