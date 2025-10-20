@@ -9,14 +9,15 @@
         private string? Complement { get; set; }
         private string City { get; set; }
         private string State { get; set; }
-        private string Country { get; set; } = string.Empty;
+        private string Country { get; set; } = "BR";
+
         public Address
             (
             string street,
             int number, string neighborhood,
             string zipCode, string? complement,
             string city, string state,
-            string country)
+            string? country)
         {
             this.Street = street;
             this.Number = number;
