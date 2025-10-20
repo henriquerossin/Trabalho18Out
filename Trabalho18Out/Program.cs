@@ -24,7 +24,7 @@
                     case 1:
                         locacao.CadastrarVeiculo();
                         break;
-                    case 2:
+                    case 2: 
                         locacao.ListarVeiculos();
                         break;
                     case 3:
