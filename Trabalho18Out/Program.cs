@@ -1,4 +1,5 @@
-﻿using Trabalho18Out.Entities;
+﻿using Trabalho18Out.Abstracts;
+using Trabalho18Out.Entities;
 using Trabalho18Out.Models;
 
 namespace Trabalho18Out
@@ -7,6 +8,8 @@ namespace Trabalho18Out
     {
         static void Main(string[] args)
         {
+            RentalCompany RentalCompany = new RentalCompany();
+
             List<string> mainOptions = new List<string>()
             {
                 "Menu Clientes",
@@ -20,6 +23,7 @@ namespace Trabalho18Out
                 "Cadastrar Cliente",
                 "Listar Clientes",
                 "Atualizar Cliente",
+                "Remover Cliente",
                 "Voltar ao Menu Principal"
             };
 
@@ -63,11 +67,7 @@ namespace Trabalho18Out
                 Console.WriteLine("Informe o CEP do cliente: ");
                 string zipCode = Console.ReadLine() ?? "";
 
-                var contact  = new Contact
-                    (
-                    email, 
-                    null
-                    );
+                var contact = new Contact(email, null);
 
                 var address = new Address(street, int.Parse(number), neighborhood, zipCode, complement, city, state, "BR");
 
@@ -79,7 +79,69 @@ namespace Trabalho18Out
                     Console.Write("Informe o número da CNH: ");
                     string cnh = Console.ReadLine() ?? "";
                     Console.Write("Informe do número do CPF: ");
+                    string cpf = Console.ReadLine() ?? "";
+                    var customer = new CustomerPF(name, birthDate, contact, address, cnh, cpf);
+
+                    RentalCompany.Customers.Add(customer);
                 }
+                else
+                {
+                    Console.Write("Informe o CNPJ da empresa: ");
+                    string cnpj = Console.ReadLine() ?? "";
+                    var customer = new CustomerPJ(name, birthDate, contact, address, cnpj);
+                    RentalCompany.Customers.Add(customer);
+                }
+            }
+
+            Person FindCustomerByName(string name)
+            {
+                return RentalCompany.Customers.Find(c => c.GetName() == name)!; // Função lambda.
+            }
+
+            void DeleteCustomer()
+            {
+                Console.Write("Informe o nome do cliente a ser removido: ");
+                string name = Console.ReadLine() ?? "";
+                var customer = FindCustomerByName(name);
+                if (customer is not null)
+                {
+                    RentalCompany.Customers.Remove(customer);
+                    Console.WriteLine("Cliente removido com sucesso.");
+                }
+                else
+                {
+                    Console.WriteLine("Cliente não encontrado.");
+                }
+            }
+
+            void ListCustomers()
+            {
+                Console.WriteLine("--- Lista de Clientes ---");
+                foreach (var customers in RentalCompany.Customers)
+                {
+                    Console.WriteLine(customers);
+                    //Console.WriteLine(customers.ToString());
+                }
+            }
+
+            Person UpdatePhone()
+            {
+                Console.Write("Informe o nome do cliente que será analizado: ");
+                string name = Console.ReadLine() ?? "";
+                var customer = FindCustomerByName(name);
+
+                if (customer is not null)
+                {
+                    Console.WriteLine("Informe o telefone do cliente: ");
+                    string phone = Console.ReadLine() ?? "";
+                    customer.SetContactPhone(phone);
+                    Console.WriteLine("Telefone atualizado com sucesso.");
+                }
+                else
+                {
+                    Console.WriteLine("Cliente não encontrado.");
+                }
+                    return customer!;
             }
 
             void CustomerMenu(int options)
@@ -90,13 +152,13 @@ namespace Trabalho18Out
                         CreateCustomer();
                         break;
                     case 2:
-                        // Lógica para listar clientes
+                        ListCustomers();
                         break;
                     case 3:
-                        // Lógica para atualizar cliente
+                        Console.WriteLine(UpdatePhone());
                         break;
                     case 4:
-                        // Voltar ao menu principal
+                        DeleteCustomer();
                         break;
                     case 5:
                         Console.WriteLine("Retornando ao Menu Principal");
@@ -112,6 +174,7 @@ namespace Trabalho18Out
                 {
                     case 1:
                         int customerChoice = Menu.Display("--- Menu Clientes ---", customerOptions);
+                        CustomerMenu(customerChoice);
                         break;
                     case 2:
                         int vehicleChoice = Menu.Display("--- Menu Veículos ---", vehicleOptions);

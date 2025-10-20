@@ -6,12 +6,22 @@
         public string? Phone { get; set; }
         public Contact
             (
-            string email, 
+            string email,
             string? phone
             )
         {
             this.Email = email;
             this.Phone = phone;
+        }
+
+        public void SetPhone(string phone)
+        {
+            this.Phone = phone;
+        }
+
+        public override string ToString()
+        {
+            return $"Email: {this.Email} \nPhone: {this.Phone}";
         }
     }
 }

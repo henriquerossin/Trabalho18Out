@@ -28,5 +28,10 @@ namespace Trabalho18Out.Models
             this.CNH = Cnh;
             this.CPF = Cpf;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Id} \n{base.ToString()} \nCNH {this.CNH} \nCPF {this.CPF}";
+        }
     }
 }

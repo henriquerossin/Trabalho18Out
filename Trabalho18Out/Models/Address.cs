@@ -28,5 +28,32 @@
             this.State = state;
             this.Country = country;
         }
+
+        public void showInfo()
+        {
+            Console.WriteLine($"Endereço: {Street}, {Number}");
+            Console.WriteLine($"Bairro: {Neighborhood}");
+            Console.WriteLine($"CEP: {ZipCode}");
+            if (Complement != null)
+            {
+                Console.WriteLine($"Complemento: {Complement}");
+            }
+            Console.WriteLine($"Cidade: {City}");
+            Console.WriteLine($"Estado: {State}");
+            Console.WriteLine($"País: {Country}");
+        }
+
+        public override string ToString()
+        {
+            return 
+                $"\nStreet: {Street}, " +
+                $"\nNumber: {Number}, " +
+                $"\nNeighborhood: {Neighborhood}, " +
+                $"\nZipCode: {ZipCode}, " +
+                $"\nComplement: {Complement}, " +
+                $"\nCity: {City}, " +
+                $"\nState: {State}, " +
+                $"\nCountry: {Country}";
+        }
     }
 }

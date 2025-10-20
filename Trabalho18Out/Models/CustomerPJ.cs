@@ -24,5 +24,10 @@ namespace Trabalho18Out.Models
         {
             this.CNPJ = CNPJ;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Id} \n{base.ToString()} \nCNPJ {this.CNPJ}";
+        }
     }
 }

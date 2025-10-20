@@ -27,9 +27,18 @@ namespace Trabalho18Out.Abstracts
             return Name;
         }
 
+        public void SetContactPhone(string phone)
+        {
+            this.Contact.SetPhone(phone);
+        }
+
         public override string ToString()
         {
-            return $"Name: {Name}, Birth Date: {BirhtDate}, Contact: {Contact}, Address: {Address}";
+            return
+                $"\nName: {Name} " +
+                $"\nBirth Date: {BirhtDate} " +
+                $"\nContact: {Contact} " +
+                $"\nAdress: {Address} ";
         }
     }
 }
